@@ -1,0 +1,13 @@
+.add-task-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+@media(min-width: 700px) {
+  .mat-tab-group-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

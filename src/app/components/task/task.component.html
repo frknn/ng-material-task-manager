@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <p>{{task.task}}</p>
+    </mat-card-title>
+    <mat-card-subtitle>{{task.deadline | date:'dd/MM/yyyy'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-icon [matTooltip]="
+    task.importance === 'primary' ? 'Düşük Öncelik': 
+    task.importance === 'accent' ? 'Orta Öncelik' : 
+     'Yüksek Öncelik'" matTooltipPosition="after" color={{task.importance}}>
+      warning
+    </mat-icon>
+  </mat-card-content>
+  <mat-action-row>
+    <button [matTooltip]="task.done ? 'Geri Al' : 'Tamamla'" (click)="handleComplete(task)" mat-icon-button>
+      <mat-icon>{{task.done ? 'replay' : 'check_circle_outline'}}</mat-icon>
+    </button>
+    <button matTooltip="Sil" (click)="handleDelete(task)" mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-action-row>
+</mat-card>

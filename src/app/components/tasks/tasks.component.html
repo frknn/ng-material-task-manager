@@ -1,0 +1,33 @@
+<div class="mat-tab-group-container">
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="günlük">
+      <div class="task-container" *ngFor="let task of tasks">
+        <app-task (switchComplete)="switchComplete($event)" (deleteTask)="deleteTask($event)" *ngIf="task.category==='günlük' && !task.done" [task]="task"></app-task>
+      </div>
+    </mat-tab>
+    <mat-tab label="haftalık">
+      <div *ngFor="let task of tasks">
+        <app-task (switchComplete)="switchComplete($event)" (deleteTask)="deleteTask($event)" *ngIf="task.category==='haftalık' && !task.done" [task]="task"></app-task>
+      </div>
+    </mat-tab>
+    <mat-tab label="aylık">
+      <div class="task-container" *ngFor="let task of tasks">
+        <app-task (switchComplete)="switchComplete($event)" (deleteTask)="deleteTask($event)" *ngIf="task.category==='aylık' && !task.done" [task]="task"></app-task>
+      </div>
+    </mat-tab>
+    <mat-tab label="tamamlananlar">
+      <div class="task-container" *ngFor="let task of tasks">
+        <app-task (switchComplete)="switchComplete($event)" (deleteTask)="deleteTask($event)" *ngIf="task.done" [task]="task"></app-task>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<a
+  routerLink="/ekle"
+  class="add-task-btn" 
+  mat-mini-fab 
+  color="primary" 
+  matTooltip="Görev Ekle"
+  matTooltipPosition="before">
+  <mat-icon>add</mat-icon>
+</a>

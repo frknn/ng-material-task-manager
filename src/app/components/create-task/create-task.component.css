@@ -1,0 +1,43 @@
+.create-task-wrapper {
+  text-align: center;
+  height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-task-wrapper mat-radio-button {
+  margin: 0.5rem;
+}
+
+.create-task-wrapper mat-card-subtitle{
+  text-align: center;
+  border-bottom: 1px solid black;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.create-task-wrapper .date-input{
+  margin-top: 1rem;
+}
+
+.create-task-wrapper .button-group{
+  display: flex;
+  justify-content: center;
+}
+
+.button-group button{
+  margin-left: 1rem;
+}
+
+.mat-display-1{
+  margin-bottom: 1rem;
+}
+
+@media(min-width: 600px) {
+  .create-task-wrapper{
+    height: calc(100vh - 100px);
+  }
+}
+

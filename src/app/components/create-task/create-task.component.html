@@ -1,0 +1,26 @@
+<div class="create-task-wrapper">
+  <div class="mat-display-1">Görev Ekle</div>
+  <mat-form-field appearance="outline">
+    <mat-label>Görevinizi giriniz</mat-label>
+    <input [(ngModel)]="task" matInput required />
+  </mat-form-field>
+  <mat-card>
+    <mat-card-subtitle>Önem</mat-card-subtitle>
+    <mat-card-content>
+      <mat-radio-group [(ngModel)]="importance">
+        <mat-radio-button value="primary">Düşük</mat-radio-button>
+        <mat-radio-button value="accent">Orta</mat-radio-button>
+        <mat-radio-button value="warn">Yüksek</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+  <mat-form-field class="date-input">
+    <input [(ngModel)]="date" placeholder="Son tarih (AA/GG/YYYY)" matInput [matDatepicker]="myDatePicker" />
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+  </mat-form-field>
+  <div class="button-group">
+    <button (click)="createTask()" mat-raised-button color="primary">Ekle</button>
+    <button routerLink="/" mat-raised-button color="warn">İptal</button>
+  </div>
+</div>
