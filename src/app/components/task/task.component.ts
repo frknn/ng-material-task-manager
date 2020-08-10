@@ -22,6 +22,24 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  calculateRemaining(date): string {
+    const seconds = date.getTime() - new Date().getTime()
+    const days = seconds / 1000 / 60 / 60 / 24;
+    if(seconds < 0) {
+      if(Math.abs(Math.floor(days))>1){
+        return `${Math.abs(Math.ceil(days))} gün geçti!`
+      } else {
+        return `${Math.abs(Math.ceil(seconds / 1000 / 60 / 60))} saat geçti!`
+      }
+    }
+    if(days > 1) {
+      return `${Math.floor(days)} gün kaldı.`;
+    } else {
+      const hours = seconds / 1000 / 60 / 60
+      return `${Math.ceil(hours)} saat kaldı.`;
+    }
+  }
+
   handleDelete(task: Task) {
     let tasks: Task[] = this.taskService.deleteTask(task)
     this.deleteTask.emit(tasks)

@@ -15,7 +15,6 @@ export class CreateTaskComponent implements OnInit {
   importance: string = "primary";
   date: any;
   minDate = new Date()
-  now = new Date().getHours()
   hour: any;
   minute: any;
 
@@ -39,12 +38,12 @@ export class CreateTaskComponent implements OnInit {
       return;
     }
 
-    let newTask: Task = {
-      id: Math.random() * 1000 + 1,
+    const newTask: Task = {
+      id: Math.floor(Math.random() * Math.floor(2000) + 1),
       task: this.task,
       done: false,
       category: 'günlük',
-      deadline: this.date.setHours(parseInt(this.hour), parseInt(this.minute)),
+      deadline: new Date(this.date.setHours(parseInt(this.hour), parseInt(this.minute))),
       importance: this.importance
     }
 
