@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Task} from '../../models/Task'
+import { Task } from '../../models/Task'
 import { TasksService } from 'src/app/services/tasks.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -13,34 +13,43 @@ export class CreateTaskComponent implements OnInit {
 
   task: string;
   importance: string = "primary";
-  date;
+  date: any;
+  minDate = new Date()
+  now = new Date().getHours()
+  hour: any;
+  minute: any;
 
   constructor(
-    private taskSerice: TasksService, 
+    private taskSerice: TasksService,
     private router: Router,
     private snackbar: MatSnackBar
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
 
   createTask() {
-    if(!(this.task && this.date)){
-      this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', {duration: 3000})
+    if (!(this.task && this.date && this.hour && this.minute)) {
+      this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', { duration: 3000 })
       return;
     }
-    
+
+    if ((!parseInt(this.hour) || !parseInt(this.minute)) || (parseInt(this.hour) < 0 || parseInt(this.hour) > 23) || (parseInt(this.minute) < 0 || parseInt(this.minute) > 59)) {
+      this.snackbar.open('Lütfen geçerli bir saat ve dakika giriniz!', 'Tamam', { duration: 3000 })
+      return;
+    }
+
     let newTask: Task = {
       id: Math.random() * 1000 + 1,
       task: this.task,
       done: false,
       category: 'günlük',
-      deadline: this.date,
+      deadline: this.date.setHours(parseInt(this.hour), parseInt(this.minute)),
       importance: this.importance
     }
 
     this.taskSerice.addTask(newTask)
-    this.snackbar.open(`${this.task} görevi oluşturuldu!`, 'Tamam', {duration: 3000})
+    this.snackbar.open(`${this.task} görevi oluşturuldu!`, 'Tamam', { duration: 3000 })
     this.router.navigate(['/'])
   }
 }
