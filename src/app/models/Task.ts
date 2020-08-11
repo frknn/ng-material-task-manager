@@ -3,6 +3,5 @@ export interface Task {
   task: string,
   done: boolean,
   deadline: Date,
-  category: string,
   importance: string
 }

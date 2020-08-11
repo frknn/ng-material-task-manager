@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/Task'
 import { TasksService } from 'src/app/services/tasks.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-tasks',
@@ -10,18 +11,29 @@ import { TasksService } from 'src/app/services/tasks.service';
 export class TasksComponent implements OnInit {
 
   tasks: Task[] = [];
+  toggleIndex: number = 0;
+  idxMapper = {
+    0: 'günlük',
+    1: 'haftalık',
+    2: 'aylık',
+    3: 'tamamlanan'
+  }
 
   constructor(private taskService: TasksService) { }
 
   ngOnInit() {
-    this.tasks = this.taskService.getTasks()
+    this.tasks = this.taskService.filterTasks(this.idxMapper[this.toggleIndex])
   }
 
-  deleteTask(tasks: Task[]){
-    this.tasks = tasks;
+  onToggleChange(){
+    this.tasks = this.taskService.filterTasks(this.idxMapper[this.toggleIndex])
   }
 
-  switchComplete(tasks: Task[]){
-    this.tasks = tasks
+  deleteTask() {
+    this.tasks = this.taskService.filterTasks(this.idxMapper[this.toggleIndex]);
+  }
+
+  switchComplete() {
+    this.tasks = this.taskService.filterTasks(this.idxMapper[this.toggleIndex]);
   }
 }

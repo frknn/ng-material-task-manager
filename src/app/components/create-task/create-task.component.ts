@@ -42,7 +42,6 @@ export class CreateTaskComponent implements OnInit {
       id: Math.floor(Math.random() * Math.floor(2000) + 1),
       task: this.task,
       done: false,
-      category: 'günlük',
       deadline: new Date(this.date.setHours(parseInt(this.hour), parseInt(this.minute))),
       importance: this.importance
     }

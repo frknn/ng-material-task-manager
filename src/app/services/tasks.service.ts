@@ -13,7 +13,6 @@ export class TasksService {
       task: 'Çöpü at',
       done: false,
       deadline: new Date(2020, 7, 9),
-      category: 'günlük',
       importance: 'primary'
     },
     {
@@ -21,7 +20,6 @@ export class TasksService {
       task: 'Market alışverişini yap',
       done: false,
       deadline: new Date(2020, 7, 9),
-      category: 'günlük',
       importance: 'accent'
     },
     {
@@ -29,7 +27,6 @@ export class TasksService {
       task: 'Dolabı düzenle',
       done: false,
       deadline: new Date(2020, 7, 9),
-      category: 'günlük',
       importance: 'warn'
     },
     {
@@ -37,7 +34,6 @@ export class TasksService {
       task: 'Evi temizle',
       done: false,
       deadline: new Date(2020, 7, 16),
-      category: 'haftalık',
       importance: 'primary'
     },
     {
@@ -45,7 +41,6 @@ export class TasksService {
       task: 'Kitabı geri ver',
       done: false,
       deadline: new Date(2020, 7, 16),
-      category: 'haftalık',
       importance: 'accent'
     },
     {
@@ -53,7 +48,6 @@ export class TasksService {
       task: 'ŞL Çeyrek Finalini izle',
       done: false,
       deadline: new Date(2020, 7, 16),
-      category: 'haftalık',
       importance: 'warn'
     },
     {
@@ -61,7 +55,6 @@ export class TasksService {
       task: 'Kirayı yatır',
       done: false,
       deadline: new Date(2020, 8, 9),
-      category: 'aylık',
       importance: 'primary'
     },
     {
@@ -69,7 +62,6 @@ export class TasksService {
       task: 'Faturaları öde',
       done: false,
       deadline: new Date(2020, 8, 9),
-      category: 'aylık',
       importance: 'accent'
     },
     {
@@ -77,7 +69,6 @@ export class TasksService {
       task: 'ŞL Finalini izle',
       done: false,
       deadline: new Date(2020, 8, 9),
-      category: 'aylık',
       importance: 'warn'
     }
   ]
@@ -85,6 +76,34 @@ export class TasksService {
   // Tüm taskleri döndürür.
   getTasks(): Task[] {
     return this.tasks
+  }
+
+  // Taskleri kalan sürelerine veya tamamlanma durumlarına göre
+  // filtreleyerek döndürür
+  filterTasks(filter: string): Task[] {
+    const nowMiliseconds: number = new Date().getTime()
+    if (filter === 'günlük') {
+      return this.tasks.filter(t => {
+        const miliseconds: number = t.deadline.getTime() - nowMiliseconds
+        const days: number = miliseconds / 1000 / 60 / 60 / 24;
+        return days < 1
+      })
+
+    } else if (filter === 'haftalık') {
+      return this.tasks.filter(t => {
+        const miliseconds: number = t.deadline.getTime() - nowMiliseconds
+        const days: number = miliseconds / 1000 / 60 / 60 / 24;
+        return days > 1 && days < 7
+      })
+    } else if (filter === 'aylık') {
+      return this.tasks.filter(t => {
+        const miliseconds: number = t.deadline.getTime() - nowMiliseconds
+        const days: number = miliseconds / 1000 / 60 / 60 / 24;
+        return days > 7 && days < 31
+      })
+    } else if (filter === 'tamamlanan'){
+      return this.tasks.filter(t => t.done)
+    }
   }
 
   /* Task arrayindeki değiştirilmek istenen taskin indexini bulur,
@@ -109,28 +128,6 @@ export class TasksService {
   // Argüman olarak verilen görevi ekleyip yeni arrayi döndürür.
   addTask(task: Task): Task[] {
     this.tasks = this.tasks.concat(task)
-    return this.tasks
-  }
-
-  /* Verilen filtredeki kategoriye sahip olan
-    tamamlanmış görevleri siler, yeni arrayi döndürür 
-  */
-  deleteDone(filter: string): Task[] {
-    let filteredTasks: Task[] = [];
-    this.tasks.forEach(t => {
-      if (!(t.category === filter && t.done)) {
-        filteredTasks.push(t)
-      }
-    })
-    this.tasks = [...filteredTasks]
-    return this.tasks
-  }
-
-  /* Verilen filtredeki kategoriye sahip olan
-    tüm görevleri siler.
-   */
-  deleteAll(filter: string): Task[] {
-    this.tasks = this.tasks.filter(t => t.category !== filter)
     return this.tasks
   }
 
