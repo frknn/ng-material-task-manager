@@ -82,26 +82,32 @@ export class TasksService {
   // filtreleyerek döndürür
   filterTasks(filter: string): Task[] {
     const nowMiliseconds: number = new Date().getTime()
+    // Görev süresi 1 günden azsa ve tamamlanmamışsa
     if (filter === 'günlük') {
       return this.tasks.filter(t => {
         const miliseconds: number = t.deadline.getTime() - nowMiliseconds
         const days: number = miliseconds / 1000 / 60 / 60 / 24;
-        return days < 1
+        return days < 1 && !t.done
       })
-
-    } else if (filter === 'haftalık') {
+    }
+    // Görev süresi 1 haftadan azsa ve tamamlanmamışsa
+    else if (filter === 'haftalık') {
       return this.tasks.filter(t => {
         const miliseconds: number = t.deadline.getTime() - nowMiliseconds
         const days: number = miliseconds / 1000 / 60 / 60 / 24;
-        return days > 1 && days < 7
+        return days > 1 && days < 7 && !t.done
       })
-    } else if (filter === 'aylık') {
+    } 
+    // Görev süresi 1 aydan azsa ve tamamlanmamışsa
+    else if (filter === 'aylık') {
       return this.tasks.filter(t => {
         const miliseconds: number = t.deadline.getTime() - nowMiliseconds
         const days: number = miliseconds / 1000 / 60 / 60 / 24;
-        return days > 7 && days < 31
+        return days > 7 && days < 31 && !t.done
       })
-    } else if (filter === 'tamamlanan'){
+    } 
+    // Görev tamamlanmışsa
+    else if (filter === 'tamamlanan'){
       return this.tasks.filter(t => t.done)
     }
   }
