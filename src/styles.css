@@ -2,3 +2,6 @@
 
 html, body { height: 100%; padding: 0; margin: 0;}
 body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+.tooltip-lines{
+  white-space: pre-line;
+}

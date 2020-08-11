@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
+import {QuickViewComponent} from './components/quick-view/quick-view.component';
 
 const routes: Routes = [
   {path:"", component: TasksComponent},
-  {path:"ekle", component: CreateTaskComponent}
+  {path:"ekle", component: CreateTaskComponent},
+  {path:"hizli", component: QuickViewComponent}
 ];
 
 @NgModule({
@@ -13,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [TasksComponent, CreateTaskComponent]
+export const routingComponents = [TasksComponent, CreateTaskComponent, QuickViewComponent]

@@ -1,0 +1,21 @@
+.quick-view-wrapper {
+  width: 85%;
+  margin: 1rem auto;
+}
+
+.quick-view-wrapper .info-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quick-view-wrapper .info-sec mat-icon{
+  margin-left: 0.5rem;
+}
+
+.back-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
