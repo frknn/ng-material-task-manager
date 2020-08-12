@@ -15,8 +15,8 @@ export class CreateTaskComponent implements OnInit {
   importance: string = "primary";
   date: any;
   minDate = new Date()
-  hour: any;
-  minute: any;
+  hour = '';
+  minute = '';
 
   constructor(
     private taskSerice: TasksService,
@@ -28,12 +28,12 @@ export class CreateTaskComponent implements OnInit {
   }
 
   createTask() {
-    if (!(this.task && this.date && this.hour && this.minute)) {
+    if (!(this.task && this.date && this.hour !== '' && this.minute !== '')) {
       this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', { duration: 3000 })
       return;
     }
 
-    if ((!parseInt(this.hour) || !parseInt(this.minute)) || (parseInt(this.hour) < 0 || parseInt(this.hour) > 23) || (parseInt(this.minute) < 0 || parseInt(this.minute) > 59)) {
+    if ((isNaN(parseInt(this.hour)) || isNaN(parseInt(this.minute))) || (parseInt(this.hour) < 0 || parseInt(this.hour) > 23) || (parseInt(this.minute) < 0 || parseInt(this.minute) > 59)) {
       this.snackbar.open('Lütfen geçerli bir saat ve dakika giriniz!', 'Tamam', { duration: 3000 })
       return;
     }

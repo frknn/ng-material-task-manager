@@ -43,7 +43,7 @@ export class TasksComponent implements OnInit {
 
   // Günlük - Haftalık - Aylık sekmeleri değiştikte
   // o kategorideki görevleri getirir
-  onToggleChange(){
+  onTabChange(){
     this.tasks = this.taskService.filterTasks(this.toggleIndexMapper[this.toggleIndex])
   }
 

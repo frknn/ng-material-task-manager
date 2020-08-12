@@ -13,7 +13,7 @@
   <div style="text-align: center; margin-top: 0.5rem;" class="mat-small">Daha fazla bilgi için farenizi görevlerin üstünde gezdirin ya da basılı tutun.</div>
   <mat-divider style="margin: 1rem;"></mat-divider>
   <mat-chip-list>
-    <mat-chip *ngFor="let task of tasks" [matTooltip]="createTooltip(task)" matTooltipClass="tooltip-lines" [color]="calculateRemaining(task)" selected>
+    <mat-chip *ngFor="let task of tasks" [matTooltip]="createTooltip(task)" matTooltipClass="tooltip-lines" [color]="generateRemainingColor(task)" selected>
       {{task.task}}</mat-chip>
   </mat-chip-list>
 </div>

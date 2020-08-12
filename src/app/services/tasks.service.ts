@@ -78,6 +78,7 @@ export class TasksService {
     return this.tasks;
   }
 
+  // Verilen id'ye sahip task'i döndürür
   getTask(id: number): Task{
     return this.tasks.find(t => t.id === id);
   }
@@ -116,6 +117,25 @@ export class TasksService {
     }
   }
 
+  // Görev süresine ne kadar kaldığını string olarak döndürür
+  calculateRemaining(date): string {
+    const seconds = date.getTime() - new Date().getTime()
+    const days = seconds / 1000 / 60 / 60 / 24;
+    if(seconds < 0) {
+      if(Math.abs(Math.floor(days))>1){
+        return `${Math.abs(Math.ceil(days))} gün geçti!`
+      } else {
+        return `${Math.abs(Math.ceil(seconds / 1000 / 60 / 60))} saat geçti!`
+      }
+    }
+    if(days > 1) {
+      return `${Math.floor(days)} gün kaldı.`;
+    } else {
+      const hours = seconds / 1000 / 60 / 60
+      return `${Math.ceil(hours)} saat kaldı.`;
+    }
+  }
+
   /* Task arrayindeki değiştirilmek istenen taskin indexini bulur,
     aynı taskleri içeren yeni bir array oluşturur,
     bulunan indexteki task objesinin done kısmını günceller
@@ -141,6 +161,7 @@ export class TasksService {
     return this.tasks;
   }
 
+  // Görevin içeriğini günceller
   editTask(task: Task): void {
     const elementsIndex: number = this.tasks.findIndex(t => t.id === task.id);
     let newTasks: Task[] = [...this.tasks];

@@ -28,31 +28,17 @@ export class TaskComponent implements OnInit {
     this.router.navigate(['/duzenle', id])
   }
 
-  calculateRemaining(date): string {
-    const seconds = date.getTime() - new Date().getTime()
-    const days = seconds / 1000 / 60 / 60 / 24;
-    if(seconds < 0) {
-      if(Math.abs(Math.floor(days))>1){
-        return `${Math.abs(Math.ceil(days))} gün geçti!`
-      } else {
-        return `${Math.abs(Math.ceil(seconds / 1000 / 60 / 60))} saat geçti!`
-      }
-    }
-    if(days > 1) {
-      return `${Math.floor(days)} gün kaldı.`;
-    } else {
-      const hours = seconds / 1000 / 60 / 60
-      return `${Math.ceil(hours)} saat kaldı.`;
-    }
+  generateRemainingString(date): string{
+    return this.taskService.calculateRemaining(date)
   }
 
-  handleDelete(task: Task) {
+  handleDelete(task: Task): void {
     this.taskService.deleteTask(task)
     this.deleteTask.emit()
     this.snackBar.open(`${task.task} görevi silindi!`, 'Tamam', { duration: 3000 })
   }
 
-  handleComplete(task: Task) {
+  handleComplete(task: Task): void {
     let message: string = task.done ?
       `${task.task} görevi geri alındı!` :
       `${task.task} görevi tamamlandı!`

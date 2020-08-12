@@ -18,38 +18,31 @@ export class QuickViewComponent implements OnInit {
     this.tasks = this.taskService.getTasks().filter(t => !t.done)
   }
 
+  // kalan süreyi string şeklinde service'ten alan fonksiyon
+  generateRemainingString(date): string {
+    return this.taskService.calculateRemaining(date);
+  }
+
   // Tooltipte gösterilecek bilgilendirme stringini oluşturur
   createTooltip(task): string {
-    return 'Son tarih: ' + this.datePipe.transform(task.deadline, 'dd/MM/yyyy HH:mm') + '\n' + 'Süre: ' + this.calculateRemainingTime(task.deadline) + '\n' + 'Öncelik: ' + (task.importance === 'primary' ? 'Düşük' : task.importance === 'accent' ? 'Orta' : 'Yüksek');
+    return 'Son tarih: '
+      + this.datePipe.transform(task.deadline, 'dd/MM/yyyy HH:mm')
+      + '\n' + 'Süre: '
+      + this.generateRemainingString(task.deadline)
+      + '\n' + 'Öncelik: '
+      + (task.importance === 'primary' ? 'Düşük' : task.importance === 'accent' ? 'Orta' : 'Yüksek');
   }
 
   // Görevlerin arka plan rengini kalan süreye göre belirler
   // tarihi geçenler için light
   // günlük için warn, haftalık için accent, aylık için primary döndürür
-  calculateRemaining(task): string {
+  generateRemainingColor(task): string {
     const miliseconds = task.deadline.getTime() - new Date().getTime()
     const days = miliseconds / 1000 / 60 / 60 / 24;
-    return days < 0 ? 'light' : days >= 0 && days < 1 ? 'warn' : days >= 1 && days < 7 ? 'accent' : 'primary'
-  }
-
-  // tasks componentindeki kalan süre hesaplama fonksiyonu
-  // refactor edilirken servise taşınacak
-  calculateRemainingTime(date): string {
-    const seconds = date.getTime() - new Date().getTime()
-    const days = seconds / 1000 / 60 / 60 / 24;
-    if(seconds < 0) {
-      if(Math.abs(Math.floor(days))>1){
-        return `${Math.abs(Math.ceil(days))} gün geçti!`
-      } else {
-        return `${Math.abs(Math.ceil(seconds / 1000 / 60 / 60))} saat geçti!`
-      }
-    }
-    if(days > 1) {
-      return `${Math.floor(days)} gün kaldı.`;
-    } else {
-      const hours = seconds / 1000 / 60 / 60
-      return `${Math.ceil(hours)} saat kaldı.`;
-    }
+    return days < 0 ? 'light' 
+    : days >= 0 && days < 1 ? 'warn' 
+    : days >= 1 && days < 7 ? 'accent' 
+    : 'primary'
   }
 
 }

@@ -4,7 +4,7 @@
       <p>{{task.task}}</p>
     </mat-card-title>
     <mat-card-subtitle>{{task.deadline | date:'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
-    <mat-card-subtitle *ngIf="!task.done">{{calculateRemaining(task.deadline)}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!task.done">{{generateRemainingString(task.deadline)}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-icon [matTooltip]="

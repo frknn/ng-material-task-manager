@@ -38,12 +38,12 @@ export class EditTaskComponent implements OnInit {
   }
 
   editTask() {
-    if (!(this.taskText && this.date && this.hour && this.minute)) {
+    if (!(this.taskText && this.date && this.hour !== '' && this.minute !== '')) {
       this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', { duration: 3000 })
       return;
     }
 
-    if ((!parseInt(this.hour) || !parseInt(this.minute)) || (parseInt(this.hour) < 0 || parseInt(this.hour) > 23) || (parseInt(this.minute) < 0 || parseInt(this.minute) > 59)) {
+    if ((isNaN(parseInt(this.hour)) || isNaN(parseInt(this.minute))) || (parseInt(this.hour) < 0 || parseInt(this.hour) > 23) || (parseInt(this.minute) < 0 || parseInt(this.minute) > 59)) {
       this.snackbar.open('Lütfen geçerli bir saat ve dakika giriniz!', 'Tamam', { duration: 3000 })
       return;
     }
@@ -57,7 +57,7 @@ export class EditTaskComponent implements OnInit {
     }
 
     this.taskService.editTask(taskToEdit)
-    this.snackbar.open(`${this.task.task} görevi düzenlendi!`, 'Tamam', { duration: 3000 })
+    this.snackbar.open(`${this.task.task} görevi ${this.taskText} olarak düzenlendi!`, 'Tamam', { duration: 3000 })
     this.router.navigate(['/'])
   }
 
