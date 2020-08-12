@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/models/Task';
 import { TasksService } from 'src/app/services/tasks.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -16,10 +17,15 @@ export class TaskComponent implements OnInit {
 
   constructor(
     private taskService: TasksService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit() {
+  }
+
+  navigateEdit(id) {
+    this.router.navigate(['/duzenle', id])
   }
 
   calculateRemaining(date): string {

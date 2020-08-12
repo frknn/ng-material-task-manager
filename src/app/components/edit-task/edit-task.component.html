@@ -1,0 +1,40 @@
+<div class="edit-task-wrapper">
+  <div class="mat-display-1">Görevi Düzenle</div>
+  <mat-form-field >
+    <mat-label>Görevinizi giriniz</mat-label>
+    <input [(ngModel)]="taskText" matInput required />
+  </mat-form-field>
+  <mat-card>
+    <mat-card-subtitle>Önem</mat-card-subtitle>
+    <mat-card-content>
+      <mat-radio-group [(ngModel)]="importance">
+        <mat-radio-button value="primary">Düşük</mat-radio-button>
+        <mat-radio-button value="accent">Orta</mat-radio-button>
+        <mat-radio-button value="warn">Yüksek</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+  <mat-form-field class="date-input">
+    <input [min]="minDate" [(ngModel)]="date" placeholder="Son tarih (AA/GG/YYYY)" matInput
+      [matDatepicker]="myDatePicker" />
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+  </mat-form-field>
+  <div class="time-input">
+    <mat-form-field>
+      <mat-label>Saat</mat-label>
+      <input [maxLength]="2" [(ngModel)]="hour" matInput required />
+      <mat-hint>(00-23)</mat-hint>
+    </mat-form-field>
+    <span>:</span>
+    <mat-form-field>
+      <mat-label>Dakika</mat-label>
+      <input [maxLength]="2" [(ngModel)]="minute" matInput required />
+      <mat-hint>(00-59)</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="button-group">
+    <button (click)="editTask()" mat-raised-button color="primary">Düzenle</button>
+    <button routerLink="/" mat-raised-button color="warn">İptal</button>
+  </div>
+</div>

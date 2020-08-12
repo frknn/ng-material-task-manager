@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TaskComponent } from './components/task/task.component';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuickViewComponent } from './components/quick-view/quick-view.component
     HeaderComponent,
     TaskComponent,
     routingComponents,
-    QuickViewComponent
+    QuickViewComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

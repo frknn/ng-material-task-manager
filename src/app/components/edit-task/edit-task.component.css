@@ -1,0 +1,54 @@
+.edit-task-wrapper {
+  text-align: center;
+  height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-task-wrapper mat-radio-button {
+  margin: 0.5rem;
+}
+
+.edit-task-wrapper mat-card-subtitle {
+  text-align: center;
+  border-bottom: 1px solid black;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.edit-task-wrapper .date-input {
+  margin-top: 1rem;
+}
+
+.time-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.time-input mat-form-field {
+  margin: 1rem;
+  width: 70px;
+}
+
+.edit-task-wrapper .button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.button-group button {
+  margin-left: 1rem;
+}
+
+.mat-display-1 {
+  margin-bottom: 1rem;
+}
+
+@media(min-width: 600px) {
+  .edit-task-wrapper {
+    height: calc(100vh - 100px);
+  }
+}

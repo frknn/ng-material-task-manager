@@ -75,7 +75,11 @@ export class TasksService {
 
   // Tüm taskleri döndürür.
   getTasks(): Task[] {
-    return this.tasks
+    return this.tasks;
+  }
+
+  getTask(id: number): Task{
+    return this.tasks.find(t => t.id === id);
   }
 
   // Taskleri kalan sürelerine veya tamamlanma durumlarına göre
@@ -118,23 +122,30 @@ export class TasksService {
     güncellenmiş task arrayi olarak döndürür.
    */
   switchTaskDone(task: Task): Task[] {
-    const elementsIndex: number = this.tasks.findIndex(t => t.id === task.id)
-    let newTasks: Task[] = [...this.tasks]
-    newTasks[elementsIndex] = { ...newTasks[elementsIndex], done: !newTasks[elementsIndex].done }
-    this.tasks = newTasks
-    return this.tasks
+    const elementsIndex: number = this.tasks.findIndex(t => t.id === task.id);
+    let newTasks: Task[] = [...this.tasks];
+    newTasks[elementsIndex] = { ...newTasks[elementsIndex], done: !newTasks[elementsIndex].done };
+    this.tasks = newTasks;
+    return this.tasks;
   }
 
   // Argüman olarak verilen görevi silip yeni arrayi döndürür.
   deleteTask(task: Task): Task[] {
-    this.tasks = this.tasks.filter(t => t.id !== task.id)
-    return this.tasks
+    this.tasks = this.tasks.filter(t => t.id !== task.id);
+    return this.tasks;
   }
 
   // Argüman olarak verilen görevi ekleyip yeni arrayi döndürür.
   addTask(task: Task): Task[] {
-    this.tasks = this.tasks.concat(task)
-    return this.tasks
+    this.tasks = this.tasks.concat(task);
+    return this.tasks;
+  }
+
+  editTask(task: Task): void {
+    const elementsIndex: number = this.tasks.findIndex(t => t.id === task.id);
+    let newTasks: Task[] = [...this.tasks];
+    newTasks[elementsIndex] = task;
+    this.tasks = newTasks;
   }
 
   constructor() { }
