@@ -4,3 +4,10 @@
   right: 20px;
   z-index: 2;
 }
+
+@media(min-width: 700px) {
+  .activity-list-wrapper{
+    width: 80%;
+    margin: 0 auto;
+  }
+}

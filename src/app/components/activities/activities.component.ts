@@ -9,12 +9,16 @@ import { Activity } from 'src/app/models/Activity';
 })
 export class ActivitiesComponent implements OnInit {
 
-  activities: Activity[] = [];
+  activitiesOfToday: Activity[] = [];
+  activitiesOfThisWeek: Activity[] = [];
+  activitiesOfThisMonth: Activity[] = [];
 
   constructor(private activityService: ActivityService) { }
 
   ngOnInit() {
-    this.activities = this.activityService.getActivities()
+    this.activitiesOfToday = this.activityService.getActivitiesOfToday()
+    this.activitiesOfThisWeek = this.activityService.getActivitiesOfLastWeek()
+    this.activitiesOfThisMonth = this.activityService.getActivitiesOfLastMonth()
   }
 
 }

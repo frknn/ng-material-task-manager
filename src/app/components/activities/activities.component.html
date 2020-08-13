@@ -1,15 +1,35 @@
 <div style="margin: 1rem auto;">
   <div style="text-align: center;" class="mat-headline">Aktiviteler</div>
-  <mat-divider></mat-divider>
-  <mat-list>
-    <mat-list-item *ngFor="let activity of activities">
-      <p class="mat-typography">
-        <b>{{activity.date | date:'dd/MM/yyyy HH:mm'}}</b>
-        <span> <b> | </b> </span>
-        {{activity.activityText}}
-      </p>
-    </mat-list-item>
-  </mat-list>
+  <div class="activity-list-wrapper">
+    <mat-list>
+      <h3 mat-subheader>Bugün</h3>
+      <mat-list-item *ngFor="let activity of activitiesOfToday">
+        <p class="mat-typography">
+          <b>{{activity.date | date:'dd/MM/yyyy HH:mm'}}</b>
+          <span> <b> - </b> </span>
+          {{activity.activityText}}
+        </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Son 7 Gün</h3>
+      <mat-list-item *ngFor="let activity of activitiesOfThisWeek">
+        <p class="mat-typography">
+          <b>{{activity.date | date:'dd/MM/yyyy HH:mm'}}</b>
+          <span> <b> - </b> </span>
+          {{activity.activityText}}
+        </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Son 31 Gün</h3>
+      <mat-list-item *ngFor="let activity of activitiesOfThisMonth">
+        <p class="mat-typography">
+          <b>{{activity.date | date:'dd/MM/yyyy HH:mm'}}</b>
+          <span> <b> - </b> </span>
+          {{activity.activityText}}
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>
 <a routerLink="/" class="back-btn" mat-mini-fab color="primary" matTooltip="Geri Dön" matTooltipPosition="before">
   <mat-icon>arrow_back</mat-icon>
