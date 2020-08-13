@@ -18,7 +18,7 @@ export class TaskComponent implements OnInit {
   constructor(
     private taskService: TasksService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class TaskComponent implements OnInit {
     this.router.navigate(['/duzenle', id])
   }
 
-  generateRemainingString(date): string{
+  generateRemainingString(date): string {
     return this.taskService.calculateRemaining(date)
   }
 
@@ -41,7 +41,8 @@ export class TaskComponent implements OnInit {
   handleComplete(task: Task): void {
     let message: string = task.done ?
       `${task.task} görevi geri alındı!` :
-      `${task.task} görevi tamamlandı!`
+      `${task.task} görevi tamamlandı!`;
+
     this.taskService.switchTaskDone(task)
     this.switchComplete.emit()
     this.snackBar.open(message, 'Tamam', { duration: 3000 })

@@ -5,14 +5,21 @@
   z-index: 2;
 }
 
-.quick-view-btn{
+.quick-view-btn {
   position: fixed;
   bottom: 20px;
   right: 70px;
   z-index: 2;
 }
 
-.search-task{
+.activities-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 120px;
+  z-index: 2;
+}
+
+.search-task {
   margin: 0 auto;
   display: flex;
   justify-content: center;

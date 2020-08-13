@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/Task'
+import { ActivityService } from './activity.service';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,8 @@ export class TasksService {
       importance: 'warn'
     }
   ]
+
+  constructor(private activityService: ActivityService) { }
 
   // Tüm taskleri döndürür.
   getTasks(): Task[] {
@@ -146,18 +149,21 @@ export class TasksService {
     let newTasks: Task[] = [...this.tasks];
     newTasks[elementsIndex] = { ...newTasks[elementsIndex], done: !newTasks[elementsIndex].done };
     this.tasks = newTasks;
+    task.done ? this.activityService.createActivity(`${task.task} görevi geri alındı!`) : this.activityService.createActivity(`${task.task} görevi tamamlandı!`)
     return this.tasks;
   }
 
   // Argüman olarak verilen görevi silip yeni arrayi döndürür.
   deleteTask(task: Task): Task[] {
     this.tasks = this.tasks.filter(t => t.id !== task.id);
+    this.activityService.createActivity(`${task.task} görevi silindi!`)
     return this.tasks;
   }
 
   // Argüman olarak verilen görevi ekleyip yeni arrayi döndürür.
   addTask(task: Task): Task[] {
     this.tasks = this.tasks.concat(task);
+    this.activityService.createActivity(`${task.task} görevi oluşturuldu!`)
     return this.tasks;
   }
 
@@ -166,8 +172,7 @@ export class TasksService {
     const elementsIndex: number = this.tasks.findIndex(t => t.id === task.id);
     let newTasks: Task[] = [...this.tasks];
     newTasks[elementsIndex] = task;
+    this.activityService.createActivity(`${this.tasks[elementsIndex].task} görevi ${task.task} olarak düzenlendi!`)
     this.tasks = newTasks;
   }
-
-  constructor() { }
 }

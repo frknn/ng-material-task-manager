@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TaskComponent } from './components/task/task.component';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     TaskComponent,
     routingComponents,
     QuickViewComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,
