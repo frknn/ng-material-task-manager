@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
-import { TasksService } from 'src/app/services/tasks.service';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-done-tasks-dialog',

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../models/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +6,8 @@ import { Task } from '../models/Task';
 export class GoalsService {
 
   private startOfToday: number = new Date().setHours(0, 0, 0, 0)
-
   private dailyGoals: number = 5;
-  private tasksDone = []
+  private tasksDone = [];
 
   constructor() { }
 
@@ -33,7 +31,6 @@ export class GoalsService {
       date: new Date()
     }
     this.tasksDone.push(doneObj)
-    console.log(this.tasksDone)
   }
 
   removeTaskDone(task) {

@@ -21,7 +21,6 @@ export class GoalsComponent implements OnInit {
 
   ngOnInit() {
     this.tasksDoneToday = this.goalService.getTasksDone()
-    console.log(this.tasksDoneToday)
     this.dailyGoals = this.goalService.getDailyGoals()
     this.value = this.tasksDoneToday.length * (100 / this.dailyGoals);
   }
