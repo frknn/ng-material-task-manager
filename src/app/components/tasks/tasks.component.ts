@@ -29,6 +29,7 @@ export class TasksComponent implements OnInit {
     this.tasks = this.taskService.filterTasks(this.toggleIndexMapper[this.toggleIndex])
   }
 
+
   // Bulunulan kategorideki görevler isme göre arar
   searchTask(){
     const foundTasks = this.taskService.filterTasks(this.toggleIndexMapper[this.toggleIndex]).filter(t => t.task.toLowerCase().includes(this.searchText.toLowerCase()))

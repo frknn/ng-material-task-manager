@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/Task'
 import { ActivityService } from './activity.service';
+import { GoalsService } from './goals.service';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +75,10 @@ export class TasksService {
     }
   ]
 
-  constructor(private activityService: ActivityService) { }
+  constructor(
+    private activityService: ActivityService,
+    private goalService: GoalsService
+  ) { }
 
   // Tüm taskleri döndürür.
   getTasks(): Task[] {
@@ -82,7 +86,7 @@ export class TasksService {
   }
 
   // Verilen id'ye sahip task'i döndürür
-  getTask(id: number): Task{
+  getTask(id: number): Task {
     return this.tasks.find(t => t.id === id);
   }
 
@@ -105,7 +109,7 @@ export class TasksService {
         const days: number = miliseconds / 1000 / 60 / 60 / 24;
         return days > 1 && days < 7 && !t.done
       })
-    } 
+    }
     // Görev süresi 1 aydan azsa ve tamamlanmamışsa
     else if (filter === 'aylık') {
       return this.tasks.filter(t => {
@@ -113,9 +117,9 @@ export class TasksService {
         const days: number = miliseconds / 1000 / 60 / 60 / 24;
         return days > 7 && days < 31 && !t.done
       })
-    } 
+    }
     // Görev tamamlanmışsa
-    else if (filter === 'tamamlanan'){
+    else if (filter === 'tamamlanan') {
       return this.tasks.filter(t => t.done)
     }
   }
@@ -124,14 +128,14 @@ export class TasksService {
   calculateRemaining(date): string {
     const seconds = date.getTime() - new Date().getTime()
     const days = seconds / 1000 / 60 / 60 / 24;
-    if(seconds < 0) {
-      if(Math.abs(Math.floor(days))>1){
+    if (seconds < 0) {
+      if (Math.abs(Math.floor(days)) > 1) {
         return `${Math.abs(Math.ceil(days))} gün geçti!`
       } else {
         return `${Math.abs(Math.ceil(seconds / 1000 / 60 / 60))} saat geçti!`
       }
     }
-    if(days > 1) {
+    if (days > 1) {
       return `${Math.floor(days)} gün kaldı.`;
     } else {
       const hours = seconds / 1000 / 60 / 60
@@ -149,7 +153,14 @@ export class TasksService {
     let newTasks: Task[] = [...this.tasks];
     newTasks[elementsIndex] = { ...newTasks[elementsIndex], done: !newTasks[elementsIndex].done };
     this.tasks = newTasks;
-    task.done ? this.activityService.createActivity(`${task.task} görevi geri alındı!`) : this.activityService.createActivity(`${task.task} görevi tamamlandı!`)
+    if (task.done) {
+      this.activityService.createActivity(`${task.task} görevi geri alındı!`)
+      this.goalService.removeTaskDone(task)
+    } else {
+      this.activityService.createActivity(`${task.task} görevi tamamlandı!`)
+      this.goalService.addTaskDone(task)
+    }
+    // task.done ? this.activityService.createActivity(`${task.task} görevi geri alındı!`) : this.activityService.createActivity(`${task.task} görevi tamamlandı!`)
     return this.tasks;
   }
 

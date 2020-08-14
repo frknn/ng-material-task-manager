@@ -1,0 +1,35 @@
+<div class="goals-container">
+  <mat-card>
+    <mat-card-title>Günlük Hedef</mat-card-title>
+    <mat-card-subtitle>{{tasksDoneToday.length}} / {{dailyGoals}}</mat-card-subtitle>
+    <mat-card-content>
+      <mat-progress-spinner color="primary" mode="determinate" [value]="value">
+      </mat-progress-spinner>
+      <p class="mat-title" *ngIf="tasksDoneToday.length >= dailyGoals ;else elseBlock">
+        TEBRİKLER, HEDEFE ULAŞTINIZ!
+      </p>
+      <ng-template #elseBlock class="mat-typography">
+        <p>Hedefinize ulaşmak için
+          <b>{{dailyGoals - tasksDoneToday.length}}</b>
+          görev daha tamamlayın!
+        </p>
+      </ng-template>
+    </mat-card-content>
+    <mat-card-actions>
+      <span>Hedef: </span>
+      <mat-slider
+      (change)="onSliderChange()"
+      [max]="10"
+      [min]="1"
+      [step]="1"
+      [(ngModel)]="dailyGoals">
+      </mat-slider>
+      <span>{{dailyGoals}}</span>
+    </mat-card-actions>
+    <button mat-flat-button color="primary" (click)="openDialog()">Tamamlananları Göster</button>
+  </mat-card>
+</div>
+
+<a routerLink="/" class="back-btn" mat-mini-fab color="primary" matTooltip="Geri Dön" matTooltipPosition="before">
+  <mat-icon>arrow_back</mat-icon>
+</a>

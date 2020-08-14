@@ -5,12 +5,14 @@ import { CreateTaskComponent } from './components/create-task/create-task.compon
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
+import { GoalsComponent } from './components/goals/goals.component';
 
 const routes: Routes = [
   { path: "", component: TasksComponent },
   { path: "ekle", component: CreateTaskComponent },
   { path: "hizli", component: QuickViewComponent },
-  { path: "aktiviteler", component: ActivitiesComponent},
+  { path: "aktiviteler", component: ActivitiesComponent },
+  { path: "hedefler", component: GoalsComponent },
   { path: "duzenle/:id", component: EditTaskComponent }
 ];
 
@@ -19,4 +21,11 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [TasksComponent, CreateTaskComponent, QuickViewComponent, EditTaskComponent, ActivitiesComponent]
+export const routingComponents = [
+  TasksComponent,
+  CreateTaskComponent,
+  QuickViewComponent,
+  EditTaskComponent,
+  ActivitiesComponent,
+  GoalsComponent
+]

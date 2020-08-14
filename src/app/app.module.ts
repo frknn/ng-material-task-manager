@@ -13,6 +13,8 @@ import { TaskComponent } from './components/task/task.component';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
+import { GoalsComponent } from './components/goals/goals.component';
+import { DoneTasksDialogComponent } from './components/done-tasks-dialog/done-tasks-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,11 @@ import { ActivitiesComponent } from './components/activities/activities.componen
     routingComponents,
     QuickViewComponent,
     EditTaskComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    GoalsComponent,
+    DoneTasksDialogComponent
   ],
+  entryComponents: [DoneTasksDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

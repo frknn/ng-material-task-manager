@@ -1,0 +1,34 @@
+.back-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.goals-container{
+  padding: 1rem;
+}
+
+.goals-container mat-card, .goals-container mat-card-content{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+mat-card-content .mat-title{
+  margin-top: 0.5rem;
+}
+
+mat-card-actions {
+  padding: 0;
+}
+
+@media(min-width: 700px) {
+  .goals-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

@@ -1,23 +1,15 @@
-.add-task-btn {
+.add-task-btn,
+.quick-view-btn,
+.activities-btn,
+.goals-btn{
   position: fixed;
   bottom: 20px;
-  right: 20px;
   z-index: 2;
 }
-
-.quick-view-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 70px;
-  z-index: 2;
-}
-
-.activities-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 120px;
-  z-index: 2;
-}
+.add-task-btn {right: 20px;}
+.quick-view-btn {right: 70px;}
+.activities-btn {right: 120px;}
+.goals-btn{right: 170px;}
 
 .search-task {
   margin: 0 auto;
