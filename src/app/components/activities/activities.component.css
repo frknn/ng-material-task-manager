@@ -1,10 +1,3 @@
-.back-btn{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2;
-}
-
 @media(min-width: 700px) {
   .activity-list-wrapper{
     width: 80%;

@@ -14,42 +14,42 @@ export class TasksService {
       id: 1,
       task: 'Çöpü at',
       done: false,
-      deadline: new Date(2020, 7, 9),
+      deadline: new Date(2020, 7, 18),
       importance: 'primary'
     },
     {
       id: 2,
       task: 'Market alışverişini yap',
       done: false,
-      deadline: new Date(2020, 7, 9),
+      deadline: new Date(2020, 7, 18),
       importance: 'accent'
     },
     {
       id: 3,
       task: 'Dolabı düzenle',
       done: false,
-      deadline: new Date(2020, 7, 9),
+      deadline: new Date(2020, 7, 18),
       importance: 'warn'
     },
     {
       id: 4,
       task: 'Evi temizle',
       done: false,
-      deadline: new Date(2020, 7, 16),
+      deadline: new Date(2020, 7, 23),
       importance: 'primary'
     },
     {
       id: 5,
       task: 'Kitabı geri ver',
       done: false,
-      deadline: new Date(2020, 7, 16),
+      deadline: new Date(2020, 7, 23),
       importance: 'accent'
     },
     {
       id: 6,
       task: 'ŞL Çeyrek Finalini izle',
       done: false,
-      deadline: new Date(2020, 7, 16),
+      deadline: new Date(2020, 7, 23),
       importance: 'warn'
     },
     {

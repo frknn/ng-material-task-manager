@@ -1,14 +1,14 @@
 <div class="goals-container">
-  <mat-card>
+  <mat-card style="margin-bottom: 1rem;">
     <mat-card-title>Günlük Hedef</mat-card-title>
     <mat-card-subtitle>{{tasksDoneToday.length}} / {{dailyGoals}}</mat-card-subtitle>
     <mat-card-content>
-      <mat-progress-spinner color="primary" mode="determinate" [value]="value">
+      <mat-progress-spinner color="primary" mode="determinate" [value]="dailyValue">
       </mat-progress-spinner>
-      <p class="mat-title" *ngIf="tasksDoneToday.length >= dailyGoals ;else elseBlock">
+      <p class="mat-title" *ngIf="tasksDoneToday.length >= dailyGoals ;else dailyElseBlock">
         TEBRİKLER, HEDEFE ULAŞTINIZ!
       </p>
-      <ng-template #elseBlock class="mat-typography">
+      <ng-template #dailyElseBlock class="mat-typography">
         <p>Hedefinize ulaşmak için
           <b>{{dailyGoals - tasksDoneToday.length}}</b>
           görev daha tamamlayın!
@@ -18,7 +18,7 @@
     <mat-card-actions>
       <span>Hedef: </span>
       <mat-slider
-      (change)="onSliderChange()"
+      (change)="onDailySliderChange()"
       [max]="10"
       [min]="1"
       [step]="1"
@@ -26,10 +26,37 @@
       </mat-slider>
       <span>{{dailyGoals}}</span>
     </mat-card-actions>
-    <button mat-flat-button color="primary" (click)="openDialog()">Tamamlananları Göster</button>
+    <button mat-flat-button color="primary" (click)="openDailyDialog()">Tamamlananları Göster</button>
+  
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-title>Aylık Hedef</mat-card-title>
+    <mat-card-subtitle>{{tasksDoneThisMonth.length}} / {{monthlyGoals}}</mat-card-subtitle>
+    <mat-card-content>
+      <mat-progress-spinner color="primary" mode="determinate" [value]="monthlyValue">
+      </mat-progress-spinner>
+      <p class="mat-title" *ngIf="tasksDoneThisMonth.length >= monthlyGoals ;else monthlyElseBlock">
+        TEBRİKLER, HEDEFE ULAŞTINIZ!
+      </p>
+      <ng-template #monthlyElseBlock class="mat-typography">
+        <p>Hedefinize ulaşmak için
+          <b>{{monthlyGoals - tasksDoneThisMonth.length}}</b>
+          görev daha tamamlayın!
+        </p>
+      </ng-template>
+    </mat-card-content>
+    <mat-card-actions>
+      <span>Hedef: </span>
+      <mat-slider
+      (change)="onMonthlySliderChange()"
+      [max]="60"
+      [min]="5"
+      [step]="1"
+      [(ngModel)]="monthlyGoals">
+      </mat-slider>
+      <span>{{monthlyGoals}}</span>
+    </mat-card-actions>
+    <button mat-flat-button color="primary" (click)="openMonthlyDialog()">Tamamlananları Göster</button>
   </mat-card>
 </div>
-
-<a routerLink="/" class="back-btn" mat-mini-fab color="primary" matTooltip="Geri Dön" matTooltipPosition="before">
-  <mat-icon>arrow_back</mat-icon>
-</a>

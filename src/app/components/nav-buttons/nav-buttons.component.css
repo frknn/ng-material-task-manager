@@ -1,0 +1,10 @@
+.nav-buttons{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+a{
+  margin-left: 0.5rem;
+}

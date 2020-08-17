@@ -15,6 +15,7 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { GoalsComponent } from './components/goals/goals.component';
 import { DoneTasksDialogComponent } from './components/done-tasks-dialog/done-tasks-dialog.component';
+import { NavButtonsComponent } from './components/nav-buttons/nav-buttons.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DoneTasksDialogComponent } from './components/done-tasks-dialog/done-ta
     EditTaskComponent,
     ActivitiesComponent,
     GoalsComponent,
-    DoneTasksDialogComponent
+    DoneTasksDialogComponent,
+    NavButtonsComponent
   ],
   entryComponents: [DoneTasksDialogComponent],
   imports: [

@@ -11,8 +11,11 @@ import {DoneTasksDialogComponent} from '../done-tasks-dialog/done-tasks-dialog.c
 export class GoalsComponent implements OnInit {
 
   tasksDoneToday = []
+  tasksDoneThisMonth = []
   dailyGoals: number;
-  value: number;
+  monthlyGoals: number;
+  dailyValue: number;
+  monthlyValue: number;
 
   constructor(
     private goalService: GoalsService,
@@ -20,18 +23,32 @@ export class GoalsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.tasksDoneToday = this.goalService.getTasksDone()
+    this.tasksDoneToday = this.goalService.getTasksDoneToday()
     this.dailyGoals = this.goalService.getDailyGoals()
-    this.value = this.tasksDoneToday.length * (100 / this.dailyGoals);
+    this.dailyValue = this.tasksDoneToday.length * (100 / this.dailyGoals);
+
+    this.tasksDoneThisMonth = this.goalService.getTasksDoneThisMonth()
+    this.monthlyGoals = this.goalService.getMonthlyGoals()
+    this.monthlyValue = this.tasksDoneThisMonth.length * (100 / this.monthlyGoals);
+
   }
 
-  onSliderChange() {
+  onDailySliderChange() {
     this.goalService.setDailyGoals(this.dailyGoals)
-    this.value = this.tasksDoneToday.length * (100 / this.dailyGoals)
+    this.dailyValue = this.tasksDoneToday.length * (100 / this.dailyGoals)
   }
 
-  openDialog(){
+  onMonthlySliderChange() {
+    this.goalService.setMonthlyGoals(this.monthlyGoals)
+    this.monthlyValue = this.tasksDoneThisMonth.length * (100 / this.monthlyGoals)
+  }
+
+  openDailyDialog(){
     this.dialog.open(DoneTasksDialogComponent, {data:{tasksDone: this.tasksDoneToday}})
+  }
+
+  openMonthlyDialog(){
+    this.dialog.open(DoneTasksDialogComponent, {data: {tasksDone: this.tasksDoneThisMonth}})
   }
 
 }

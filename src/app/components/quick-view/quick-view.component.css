@@ -12,10 +12,3 @@
 .quick-view-wrapper .info-sec mat-icon{
   margin-left: 0.5rem;
 }
-
-.back-btn{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2;
-}

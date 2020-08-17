@@ -1,4 +1,4 @@
-<h2 *ngIf="!data.tasksDone.length; else elseBlock" style="text-align: center">Tamamlanan Görev Yok</h2>
+<h2 *ngIf="!data.tasksDone.length; else elseBlock" style="text-align: center">Tamamlanan Görev Yok!</h2>
 <ng-template #elseBlock>
   <h2 style="text-align: center;" mat-dialog-title>Tamamlanan Görevler</h2>
   <mat-divider></mat-divider>
