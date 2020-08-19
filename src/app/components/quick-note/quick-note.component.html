@@ -1,0 +1,26 @@
+<div class="quick-note-container" >
+  <mat-card style="margin: 0.5rem">
+    <mat-card-header class="card-header">
+      <mat-card-title style="margin: 0;" >{{note.title}}</mat-card-title>
+      <button matTooltip="Sil" (click)="deleteQuickNoteTitle(note.title)" mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <div class="add-quick-note">
+        <mat-form-field style="margin: 0.5rem;">
+          <mat-label>Not ekleyin</mat-label>
+          <input [(ngModel)]="quickNote" matInput />
+        </mat-form-field>
+        <button (click)="addQuickNote()" matTooltip="Ekle" mat-stroked-button color="primary">
+          Ekle
+        </button>
+      </div>
+      <div *ngFor="let n of notes">
+        <mat-checkbox [checked]="n.done" (change)="toggleNote(note, n)">
+          <p [class.done]="n.done">{{n.note}}</p>
+        </mat-checkbox>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

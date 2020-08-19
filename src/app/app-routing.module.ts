@@ -6,6 +6,7 @@ import { QuickViewComponent } from './components/quick-view/quick-view.component
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { GoalsComponent } from './components/goals/goals.component';
+import { QuickNotesComponent } from './components/quick-notes/quick-notes.component';
 
 const routes: Routes = [
   { path: "", component: TasksComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "hizli", component: QuickViewComponent },
   { path: "aktiviteler", component: ActivitiesComponent },
   { path: "hedefler", component: GoalsComponent },
+  { path: "hizli-notlar", component: QuickNotesComponent },
   { path: "duzenle/:id", component: EditTaskComponent }
 ];
 
@@ -27,5 +29,6 @@ export const routingComponents = [
   QuickViewComponent,
   EditTaskComponent,
   ActivitiesComponent,
-  GoalsComponent
+  GoalsComponent,
+  QuickNotesComponent
 ]

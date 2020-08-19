@@ -1,0 +1,30 @@
+.add-quick-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+@media(min-width: 700px) {
+  .quick-note-container {
+    margin: 0 auto;
+    width: 60%;
+
+  }
+}

@@ -1,0 +1,13 @@
+<div class="add-quick-note-title">
+  <mat-form-field style="margin: 0.5rem;">
+    <mat-label>Not başlığı ekleyin</mat-label>
+    <input [(ngModel)]="note" matInput />
+  </mat-form-field>
+  <button matTooltip="Ekle" (click)="addQuickNoteTitle()" mat-stroked-button color="primary">
+    Ekle
+  </button>
+</div>
+
+<div *ngFor="let note of quickNotes">
+  <app-quick-note (deleteQuickNoteTitleFromParent)="deleteQuickNoteTitle($event)" [note]="note"></app-quick-note>
+</div>

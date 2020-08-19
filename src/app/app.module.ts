@@ -16,6 +16,8 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { GoalsComponent } from './components/goals/goals.component';
 import { DoneTasksDialogComponent } from './components/done-tasks-dialog/done-tasks-dialog.component';
 import { NavButtonsComponent } from './components/nav-buttons/nav-buttons.component';
+import { QuickNotesComponent } from './components/quick-notes/quick-notes.component';
+import { QuickNoteComponent } from './components/quick-note/quick-note.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NavButtonsComponent } from './components/nav-buttons/nav-buttons.compon
     ActivitiesComponent,
     GoalsComponent,
     DoneTasksDialogComponent,
-    NavButtonsComponent
+    NavButtonsComponent,
+    QuickNotesComponent,
+    QuickNoteComponent
   ],
   entryComponents: [DoneTasksDialogComponent],
   imports: [
