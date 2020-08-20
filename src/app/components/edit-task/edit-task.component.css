@@ -1,6 +1,6 @@
 .edit-task-wrapper {
   text-align: center;
-  height: calc(100vh - 56px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,6 +49,6 @@
 
 @media(min-width: 600px) {
   .edit-task-wrapper {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 130px);
   }
 }

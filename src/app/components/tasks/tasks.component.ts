@@ -10,6 +10,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class TasksComponent implements OnInit {
 
+  /* Görevleri tutmak için bir task arrayi
+    ve görev aramak için kullanılan inputu kontrol eden değişken
+  */
   tasks: Task[] = [];
   searchText: string = '';
   // Seçili kategori sekmesi
@@ -31,20 +34,20 @@ export class TasksComponent implements OnInit {
 
 
   // Bulunulan kategorideki görevler isme göre arar
-  searchTask(){
+  searchTask() {
     const foundTasks = this.taskService.filterTasks(this.toggleIndexMapper[this.toggleIndex]).filter(t => t.task.toLowerCase().includes(this.searchText.toLowerCase()))
-    if(foundTasks.length){
+    if (foundTasks.length) {
       this.tasks = foundTasks
-      this.snackbar.open(`${this.tasks.length} görev bulundu!`, 'Tamam', {duration: 3000})
+      this.snackbar.open(`${this.tasks.length} görev bulundu!`, 'Tamam', { duration: 3000 })
     } else {
-      this.snackbar.open('Görev bulunamadı!', 'Tamam', {duration: 3000})
+      this.snackbar.open('Görev bulunamadı!', 'Tamam', { duration: 3000 })
     }
     this.searchText = ''
   }
 
   // Günlük - Haftalık - Aylık sekmeleri değiştikte
   // o kategorideki görevleri getirir
-  onTabChange(){
+  onTabChange() {
     this.tasks = this.taskService.filterTasks(this.toggleIndexMapper[this.toggleIndex])
   }
 

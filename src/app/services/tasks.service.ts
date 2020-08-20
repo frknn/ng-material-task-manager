@@ -8,7 +8,7 @@ import { GoalsService } from './goals.service';
 })
 export class TasksService {
 
-  // Default olarak oluşturulan görevler arrayi.
+  // Örnek olarak oluşturulan görevler arrayi.
   tasks: Task[] = [
     {
       id: 1,

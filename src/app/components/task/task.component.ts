@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 })
 export class TaskComponent implements OnInit {
 
+  /* Gösterilecek task input olara üst componetten alınır.
+    Silme ve Tamamlama işlemleri için üst componente event emitterlar
+    yardımıyla haber verilir.
+   */
   @Input() task: Task;
   @Output() deleteTask = new EventEmitter<any>()
   @Output() switchComplete = new EventEmitter<any>()
@@ -24,20 +28,32 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Görev düzenleme sayfasına yönlendirme fonksiyonu
+  // Görevin bulunabilmesi için id'yi route parametresi olarak ekler.
   navigateEdit(id) {
     this.router.navigate(['/duzenle', id])
   }
 
+  /* Servisten görevin tammalanmasına ne kadar süre kaldığını
+    isteyen fonksiyon.  
+  */
   generateRemainingString(date): string {
     return this.taskService.calculateRemaining(date)
   }
 
+  /* Servis yardımıyla istenen görevi siler ve üst componente
+  bir event yollar.
+  */
   handleDelete(task: Task): void {
     this.taskService.deleteTask(task)
     this.deleteTask.emit()
     this.snackBar.open(`${task.task} görevi silindi!`, 'Tamam', { duration: 3000 })
   }
 
+  /* Görevin tamamlanması ya da tamamlanan görevin
+    geri alınmasına göre bir mesaj oluşturur.
+    Servis yardımıyla görevin "done" propertysini toggle eder. 
+  */
   handleComplete(task: Task): void {
     let message: string = task.done ?
       `${task.task} görevi geri alındı!` :

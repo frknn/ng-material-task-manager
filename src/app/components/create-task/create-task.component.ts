@@ -11,6 +11,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class CreateTaskComponent implements OnInit {
 
+  /* Görev yaratılırken 
+    form öğelerini kontrol etmek için gerekli değişkenler
+  */
   task: string;
   importance: string = "primary";
   date: any;
@@ -27,6 +30,11 @@ export class CreateTaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  /* Form validasyonu yapılır.
+    Form öğelerini kontrol eden değişkenlerle
+    yeni bir task objesi oluşturulur.
+    Servis aracılığıyla task yaratılır.
+  */
   createTask() {
     if (!(this.task && this.date && this.hour !== '' && this.minute !== '')) {
       this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', { duration: 3000 })

@@ -11,6 +11,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class EditTaskComponent implements OnInit {
 
+  /* Görev düzenlenirken form öğelerini 
+  kontrol etmek için gerekli değişkenler
+  */
   task: Task;
   taskText: string;
   importance: string = "";
@@ -24,7 +27,7 @@ export class EditTaskComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private snackbar: MatSnackBar
-    ) { }
+  ) { }
 
   ngOnInit() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -37,6 +40,11 @@ export class EditTaskComponent implements OnInit {
     this.minute = task.deadline.getMinutes();
   }
 
+  /* Form validasyonu yapılır.
+  Form öğelerini kontrol eden değişkenlerle
+  yeni bir task objesi oluşturulur.
+  Servis aracılığıyla aynı id'ye sahip task güncellenir.
+  */
   editTask() {
     if (!(this.taskText && this.date && this.hour !== '' && this.minute !== '')) {
       this.snackbar.open('Lütfen tüm alanları dolurunuz!', 'Tamam', { duration: 3000 })
@@ -47,6 +55,7 @@ export class EditTaskComponent implements OnInit {
       this.snackbar.open('Lütfen geçerli bir saat ve dakika giriniz!', 'Tamam', { duration: 3000 })
       return;
     }
+
 
     const taskToEdit: Task = {
       id: this.task.id,

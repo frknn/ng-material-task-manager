@@ -15,6 +15,9 @@ export class ActivitiesComponent implements OnInit {
 
   constructor(private activityService: ActivityService) { }
 
+  /* Component yüklenirken günlğk, haftalık, aylık
+    yapılan aktiviteleri servisten çağırılıp arraylere atanır.
+  */
   ngOnInit() {
     this.activitiesOfToday = this.activityService.getActivitiesOfToday()
     this.activitiesOfThisWeek = this.activityService.getActivitiesOfLastWeek()
