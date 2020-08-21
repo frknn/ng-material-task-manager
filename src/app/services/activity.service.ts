@@ -14,10 +14,10 @@ export class ActivityService {
 
   // Örnek aktiviteler
   activities: Activity[] = [
-    { id: 1, activityText: 'Örnek 1', date: new Date(new Date(2020, 7, 14).setHours(14, 0)) },
-    { id: 1, activityText: 'Örnek 2', date: new Date(new Date(2020, 7, 12).setHours(20, 0)) },
-    { id: 2, activityText: 'Örnek 3', date: new Date(new Date(2020, 7, 8).setHours(14, 0)) },
-    { id: 3, activityText: 'Örnek 4', date: new Date(new Date(2020, 7, 1).setHours(14, 0)) }
+    { id: 1, activityText: 'Örnek 1', date: new Date(new Date(2020, 7, 21).setHours(14, 0)) },
+    { id: 1, activityText: 'Örnek 2', date: new Date(new Date(2020, 7, 18).setHours(20, 0)) },
+    { id: 2, activityText: 'Örnek 3', date: new Date(new Date(2020, 7, 12).setHours(14, 0)) },
+    { id: 3, activityText: 'Örnek 4', date: new Date(new Date(2020, 7, 5).setHours(14, 0)) }
   ];
 
   constructor() { }

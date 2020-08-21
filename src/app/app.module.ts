@@ -18,6 +18,7 @@ import { DoneTasksDialogComponent } from './components/done-tasks-dialog/done-ta
 import { NavButtonsComponent } from './components/nav-buttons/nav-buttons.component';
 import { QuickNotesComponent } from './components/quick-notes/quick-notes.component';
 import { QuickNoteComponent } from './components/quick-note/quick-note.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { QuickNoteComponent } from './components/quick-note/quick-note.component
     DoneTasksDialogComponent,
     NavButtonsComponent,
     QuickNotesComponent,
-    QuickNoteComponent
+    QuickNoteComponent,
+    PageNotFoundComponent
   ],
   entryComponents: [DoneTasksDialogComponent],
   imports: [

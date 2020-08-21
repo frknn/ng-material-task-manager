@@ -7,15 +7,18 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { GoalsComponent } from './components/goals/goals.component';
 import { QuickNotesComponent } from './components/quick-notes/quick-notes.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 const routes: Routes = [
-  { path: "", component: TasksComponent },
+  { path: "", redirectTo: '/ana-sayfa', pathMatch: 'full' },
+  { path: "ana-sayfa", component: TasksComponent },
   { path: "ekle", component: CreateTaskComponent },
   { path: "hizli", component: QuickViewComponent },
   { path: "aktiviteler", component: ActivitiesComponent },
   { path: "hedefler", component: GoalsComponent },
   { path: "hizli-notlar", component: QuickNotesComponent },
-  { path: "duzenle/:id", component: EditTaskComponent }
+  { path: "duzenle/:id", component: EditTaskComponent },
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -30,5 +33,6 @@ export const routingComponents = [
   EditTaskComponent,
   ActivitiesComponent,
   GoalsComponent,
-  QuickNotesComponent
+  QuickNotesComponent,
+  PageNotFoundComponent
 ]

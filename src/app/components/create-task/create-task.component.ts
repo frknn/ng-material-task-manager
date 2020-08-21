@@ -56,6 +56,6 @@ export class CreateTaskComponent implements OnInit {
 
     this.taskSerice.addTask(newTask)
     this.snackbar.open(`${this.task} görevi oluşturuldu!`, 'Tamam', { duration: 3000 })
-    this.router.navigate(['/'])
+    this.router.navigate(['/ana-sayfa'])
   }
 }

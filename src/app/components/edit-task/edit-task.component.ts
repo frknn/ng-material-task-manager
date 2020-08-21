@@ -67,7 +67,7 @@ export class EditTaskComponent implements OnInit {
 
     this.taskService.editTask(taskToEdit)
     this.snackbar.open(`${this.task.task} görevi ${this.taskText} olarak düzenlendi!`, 'Tamam', { duration: 3000 })
-    this.router.navigate(['/'])
+    this.router.navigate(['/ana-sayfa'])
   }
 
 }
