@@ -8,69 +8,74 @@ import { GoalsService } from './goals.service';
 })
 export class TasksService {
 
+  currentDate = new Date()
+  year = this.currentDate.getFullYear()
+  month = this.currentDate.getMonth()
+  day = this.currentDate.getDate()
+
   // Örnek olarak oluşturulan görevler arrayi.
   tasks: Task[] = [
     {
       id: 1,
       task: 'Çöpü at',
       done: false,
-      deadline: new Date(2020, 7, 27),
+      deadline: new Date(this.year, this.month, this.day, 23, 55, 0, 0),
       importance: 'primary'
     },
     {
       id: 2,
       task: 'Market alışverişini yap',
       done: false,
-      deadline: new Date(2020, 7, 27),
+      deadline: new Date(this.year, this.month, this.day, 23, 55, 0, 0),
       importance: 'accent'
     },
     {
       id: 3,
       task: 'Dolabı düzenle',
       done: false,
-      deadline: new Date(2020, 7, 27),
+      deadline: new Date(this.year, this.month, this.day, 23, 55, 0, 0),
       importance: 'warn'
     },
     {
       id: 4,
       task: 'Evi temizle',
       done: false,
-      deadline: new Date(2020, 8, 2),
+      deadline: new Date(this.year, this.month, this.day + 5, 23, 55, 0, 0),
       importance: 'primary'
     },
     {
       id: 5,
       task: 'Kitabı geri ver',
       done: false,
-      deadline: new Date(2020, 8, 2),
+      deadline: new Date(this.year, this.month, this.day + 5, 23, 55, 0, 0),
       importance: 'accent'
     },
     {
       id: 6,
       task: 'ŞL Çeyrek Finalini izle',
       done: false,
-      deadline: new Date(2020, 8, 2),
+      deadline: new Date(this.year, this.month, this.day + 5, 23, 55, 0, 0),
       importance: 'warn'
     },
     {
       id: 7,
       task: 'Kirayı yatır',
       done: false,
-      deadline: new Date(2020, 8, 20),
+      deadline: new Date(this.year, this.month, this.day + 22, 23, 55, 0, 0),
       importance: 'primary'
     },
     {
       id: 8,
       task: 'Faturaları öde',
       done: false,
-      deadline: new Date(2020, 8, 20),
+      deadline: new Date(this.year, this.month, this.day + 22, 23, 55, 0, 0),
       importance: 'accent'
     },
     {
       id: 9,
       task: 'ŞL Finalini izle',
       done: false,
-      deadline: new Date(2020, 8, 20),
+      deadline: new Date(this.year, this.month, this.day + 22, 23, 55, 0, 0),
       importance: 'warn'
     }
   ]
